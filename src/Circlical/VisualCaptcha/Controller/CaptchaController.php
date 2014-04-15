@@ -2,9 +2,9 @@
 
 /**
 ,,
-`""*3b..											
-     ""*3o.					  						10/22/13 2:12 PM
-         "33o.			                  			Alexandre Lemaire
+`""*3b..                                            
+     ""*3o.                                         10/22/13 2:12 PM
+         "33o.                                      Alexandre Lemaire
            "*33o.                                   Circlical
               "333o.
                 "3333bo...       ..o:
@@ -22,7 +22,7 @@
                                   A3333333333P
                                   "  "33333P"
                                       33P*"
-		                              .3"
+                                      .3"
                                      "
                                      
                                      
@@ -42,18 +42,14 @@ class CaptchaController extends AbstractActionController
 
         $howMany = $this->params()->fromRoute('count');
         $session = $this->getServiceLocator()->get('CaptchaSession');
-        $config  = $this->getServiceLocator()->get('config');
-        $config  = $config['circlical']['visualcaptcha'];
-        $captcha = new \visualCaptcha\Captcha( $session, null, $this->getServiceLocator()->get('VisualCaptchaImages'), isset( $config['audio'] ) ? $config['audio'] : null );
+        $captcha = new \visualCaptcha\Captcha( $session, null, $this->getServiceLocator()->get('VisualCaptchaImages'), $this->getServiceLocator()->get('VisualCaptchaAudio') );
         $captcha->generate( $howMany );
         return new JsonModel( $captcha->getFrontendData() );
     }
 
     public function audioAction(){
         $session = $this->getServiceLocator()->get('CaptchaSession');
-        $config  = $this->getServiceLocator()->get('config');
-        $config  = $config['circlical']['visualcaptcha'];
-        $captcha = new \visualCaptcha\Captcha( $session, null, $this->getServiceLocator()->get('VisualCaptchaImages'), isset( $config['audio'] ) ? $config['audio'] : null );
+        $captcha = new \visualCaptcha\Captcha( $session, null, $this->getServiceLocator()->get('VisualCaptchaImages'), $this->getServiceLocator()->get('VisualCaptchaAudio') );
 
         $fileType       = $this->params()->fromRoute( 'type' );
         if( $fileType )
@@ -87,9 +83,7 @@ class CaptchaController extends AbstractActionController
 
     public function imageAction(){
         $session = $this->getServiceLocator()->get('CaptchaSession');
-        $config  = $this->getServiceLocator()->get('config');
-        $config  = $config['circlical']['visualcaptcha'];
-        $captcha = new \visualCaptcha\Captcha( $session, null, $this->getServiceLocator()->get('VisualCaptchaImages'), isset( $config['audio'] ) ? $config['audio'] : null );
+        $captcha = new \visualCaptcha\Captcha( $session, null, $this->getServiceLocator()->get('VisualCaptchaImages'), $this->getServiceLocator()->get('VisualCaptchaAudio') );
         $index   = $this->params()->fromRoute('index');
 
         $imageOption    = $captcha->getImageOptionAtIndex( $index );
