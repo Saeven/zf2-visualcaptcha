@@ -1,0 +1,40 @@
+{
+    "name": "circlical/visualcaptcha",
+    "description": "Zend Framework 2 Adapter for VisualCaptcha.net's cool captcha",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/Saeven/zf2-visualcaptcha",
+    "keywords": [
+        "zf2",
+        "visualcaptcha",
+        "captcha"
+    ],
+    "authors": [
+        {
+            "name": "Alexandre Lemaire",
+            "email": "alemaire@circlical.com",
+            "homepage": "http://circlical.com/",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "widmogrod/zf2-assetic-module": "1.*",
+        "zendframework/zendframework": "2.2.*",
+        "emotionloop/visualcaptcha": "dev-master"
+    },
+    "suggest": {
+        "aws/aws-sdk-php-zf2": "Lets you create sessions in DynamoDB on production machines."
+    },
+    "autoload": {
+        "psr-0": {
+            "Circlical\\VisualCaptcha\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
